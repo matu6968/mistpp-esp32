@@ -1,3 +1,8 @@
 .cache/
 build/
 compile_commands.json
+test/esp-project/build/
+test/esp-project/sdkconfig
+test/esp-project/sdkconfig.old
+test/esp-project/managed_components
+test/esp-project/dependencies.lock

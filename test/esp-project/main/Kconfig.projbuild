@@ -1,0 +1,47 @@
+menu "Mist++ Example Configuration"
+
+    config MIST_PROJECT_ID
+        string "TurboWarp Project ID"
+        default "152385113"
+        help
+            The Project ID for the TurboWarp cloud variable server.
+            Default: 152385113
+
+    config MIST_CONTACT_INFO
+        string "User Agent Contact Information"
+        default "esp32@example.com"
+        help
+            Contact information to include in the user-agent header.
+            Required to identify the device to the TurboWarp server in order to successfully connect.
+            See https://docs.turbowarp.org/cloud-variables#user-agent for more details.
+
+    config MIST_CLOUD_URL
+        string "TurboWarp Cloud URL"
+        default "wss://clouddata.turbowarp.org/"
+        help
+            The WebSocket URL for the TurboWarp cloud variable server.
+            Default: wss://clouddata.turbowarp.org/ (Official TurboWarp server)
+
+    config WS_OVER_TLS_SERVER_AUTH
+        bool "Enable WebSocket over TLS with Server Certificate Verification"
+        default y
+        help
+            Enables WebSocket connections over TLS (WSS) with server certificate verification.
+            The client will verify the server's certificate using the ESP-IDF certificate bundle.
+
+    config WS_OVER_TLS_SKIP_COMMON_NAME_CHECK
+        bool "Skip common name(CN) check during TLS authentication"
+        default n
+        help
+            Skipping Common Name(CN) check during TLS (WSS) authentication.
+            Only disable this for testing with self-signed certificates.
+
+    if CONFIG_IDF_TARGET = "linux"
+      config GCOV_ENABLED
+          bool "Coverage analyzer"
+          default n
+          help
+              Enables coverage analyzing for host tests.
+    endif
+endmenu
+
